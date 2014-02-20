@@ -1,4 +1,3 @@
-var util = require('util');
 var redis = require('redis');
 
 exports.register = function() {
@@ -6,11 +5,11 @@ exports.register = function() {
 }
 
 exports.connect_redis = function (next, server) {
-  var config = this.config.get('redis.ini').main;
-  server.notes.redis = redis.createClient(config.port, config.host);
-  if (config.password) {
-    server.notes.redis.auth(config.password);
-  }
-  this.loginfo("Redis connection established");
-  next()
+    var config = this.config.get('redis.ini').main;
+    server.notes.redis = redis.createClient(config.port, config.host);
+    if (config.password) {
+        server.notes.redis.auth(config.password);
+    }
+    this.loginfo("Redis connection established");
+    next()
 }
