@@ -1,0 +1,8 @@
+{
+  "name":"haraka_local",
+  "description":"An SMTP Server",
+  "version":"0.0.5",
+  "dependencies":{
+    "redis": "~> 0.10.1"
+    }
+}
