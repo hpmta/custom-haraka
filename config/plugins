@@ -43,3 +43,4 @@ relay_all
 # custom plugins
 redis
 add_message_info
+custom_logs

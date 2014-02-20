@@ -19,8 +19,8 @@ describe 'add message info plugin', ->
     describe 'with X-Mailee-clientId and X-Mailee-deliveryToken headers', ->
 
       info = sinon.stub()
-      info.withArgs("X-Mailee-clientId").returns("1234")
-      info.withArgs("X-Mailee-deliveryToken").returns("5678")
+      info.withArgs("X-Mailee-clientId").returns("1234\n")
+      info.withArgs("X-Mailee-deliveryToken").returns("5678\n")
       connection = {transaction: {header: {get: info}, notes: {}}}
 
       it 'should add clientId to transaction notes', (done) ->
@@ -36,7 +36,6 @@ describe 'add message info plugin', ->
         ), connection
 
     describe 'without headers', ->
-      plugin.DENY = 901
       info = sinon.stub()
       info.withArgs("X-Mailee-clientId").returns(null)
       info.withArgs("X-Mailee-deliveryToken").returns(null)
@@ -44,7 +43,7 @@ describe 'add message info plugin', ->
 
       it 'should deny message unless X-Mailee-clientId present', (done) ->
         plugin.add_info ((retval, msg) ->
-          should(retval).eql(plugin.DENY)
+          should(retval).eql(902)
           should(msg).eql("Your message must contain header X-Mailee-clientId")
           done()
         ), connection
@@ -53,7 +52,7 @@ describe 'add message info plugin', ->
       it 'should deny message unless X-Mailee-deliveryToken present', (done) ->
         info.withArgs("X-Mailee-clientId").returns("1234")
         plugin.add_info ((retval, msg) ->
-          should(retval).eql(plugin.DENY)
+          should(retval).eql(902)
           should(msg).eql("Your message must contain header X-Mailee-deliveryToken")
           done()
         ), connection
