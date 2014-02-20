@@ -2,7 +2,16 @@
   "name":"haraka_local",
   "description":"An SMTP Server",
   "version":"0.0.5",
-  "dependencies":{
+  "dependencies": {
     "redis": "~> 0.10.1"
-    }
+    },
+  "devDependencies": {
+    "mocha": "~> 1.17.1",
+    "should": "~> 3.1.2",
+    "coffee-script": "~> 1.6.3",
+    "sinon": "~> 1.8.2"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec -G --require should --ui bdd --compilers coffee:coffee-script --colors spec/*_spec.coffee"
+  }
 }

@@ -1,7 +1,7 @@
 # default list of plugins
 
 # Log to syslog (disabled by default, see docs)
-# log.syslog
+log.syslog
 
 # block mails from known bad hosts (see config/dnsbl.zones for the DNS zones queried)
 #dnsbl
@@ -41,5 +41,4 @@ relay_all
 #deferred
 #
 # custom plugins
-log.syslog
 redis
