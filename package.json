@@ -12,6 +12,6 @@
     "sinon": "~> 1.8.2"
   },
   "scripts": {
-    "test": "mocha --reporter spec -G --require should --ui bdd --compilers coffee:coffee-script --colors spec/*_spec.coffee"
+    "test": "TEST=true mocha --reporter spec -G --require should --ui bdd --compilers coffee:coffee-script --colors spec/*_spec.coffee"
   }
 }
