@@ -18,6 +18,7 @@ exports.hook_get_mx = function (next, hmail, domain) {
             i++;
             if (i == ips.length) i = 0;
         });
+        // add IP to hmail.todo.notes.ip
         next(OK, mxs);
     })
 }
